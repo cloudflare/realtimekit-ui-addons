@@ -19,8 +19,9 @@ export default defineConfig({
         'participants-tab-toggle': "./src/participants-tab-toggle/index.ts",
         'chat-host-control': "./src/chat-host-control/index.ts",
         'mic-host-control': "./src/mic-host-control/index.ts",
-        'camera-host-control': "./src/camera-host-control/index.ts",
         'participant-menu-item': "./src/participant-menu-item/index.ts",
+        'custom-fullscreen-element': "./src/custom-fullscreen-element/index.ts"
+        'camera-host-control': "./src/camera-host-control/index.ts",
         'participant-tile-menu': "./src/participant-tile-menu/index.ts"
       },
     },

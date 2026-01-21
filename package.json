@@ -69,6 +69,12 @@
       "require": "./dist/participant-menu-item.cjs",
       "default": "./dist/participant-menu-item.cjs",
       "types": "./dist/esm/participant-menu-item/index.d.ts"
+    },
+    "./custom-fullscreen-element": {
+      "import": "./dist/custom-fullscreen-element.js",
+      "require": "./dist/custom-fullscreen-element.cjs",
+      "default": "./dist/custom-fullscreen-element.cjs",
+      "types": "./dist/esm/custom-fullscreen-element/index.d.ts"
     }
   },
   "typesVersions": {
@@ -99,6 +105,9 @@
       ],
       "participant-menu-item": [
         "./dist/esm/participant-menu-item/index.d.ts"
+      ],
+      "custom-fullscreen-element": [
+        "./dist/esm/custom-fullscreen-element/index.d.ts"
       ],
       "participant-tile-menu": [
         "./dist/esm/participant-tile-menu/index.d.ts"
