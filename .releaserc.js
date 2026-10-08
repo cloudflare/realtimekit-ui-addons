@@ -9,7 +9,7 @@ const baseConfig = {
       '@semantic-release/npm',
       {
         npmPublish: false,
-        tarballDir: 'dist',
+        tarballDir: 'release',
       },
     ],
     [
@@ -23,7 +23,7 @@ const baseConfig = {
     [
       '@semantic-release/github',
       {
-        assets: 'dist/*.tgz',
+        assets: 'release/*.tgz',
       },
     ],
   ],
