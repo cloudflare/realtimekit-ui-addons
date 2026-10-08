@@ -157,7 +157,7 @@ export class HandRaisedList extends HTMLElement {
         lowerHand.variant = 'ghost';
         // @ts-ignore
         lowerHand.onclick = () => {
-            this._onRemove ? this._onRemove(participant.id) : null;
+            this._onRemove?.(participant.id);
         };
 
         const i = this.createElement('rtk-icon', 'icon');

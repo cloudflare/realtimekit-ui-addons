@@ -52,7 +52,7 @@ export default class ParticipantTabToggle {
 
     initialValue: () => boolean = () => false;
 
-    onStateChange: (cb: (state: boolean) => {}) => void = () => {};
+    onStateChange: (cb: (state: boolean) => void) => void = () => {};
 
     constructor(args: ParticipantTabToggleArgs) {
         this.position = args.position;

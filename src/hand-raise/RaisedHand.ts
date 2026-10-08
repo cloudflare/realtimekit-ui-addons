@@ -65,7 +65,7 @@ export default class RaisedHand extends HTMLElement {
          * NOTE(ravindra-cloudflare): These PIP related lines are needed to show hand raise in PIP
          * */
         const pip = this.meeting.participants.pip;
-        pip.updateSource && pip.updateSource(participant.id, {
+        pip.updateSource?.(participant.id, {
             handRaised: this.raised
         });
 

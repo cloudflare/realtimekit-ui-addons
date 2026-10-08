@@ -1,5 +1,4 @@
 const baseConfig = {
-  branches: [],
   tagFormat: '@cloudflare/realtimekit-ui-addons-v${version}',
   plugins: [
     '@semantic-release/commit-analyzer',

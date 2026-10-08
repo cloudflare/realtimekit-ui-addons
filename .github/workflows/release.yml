@@ -4,8 +4,9 @@ on:
     branches:
       - main
       - staging
-  repository_dispatch:
-    types: [prod-release]
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
 
 jobs:
   release:
@@ -19,6 +20,8 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
 
       - uses: actions/setup-node@v6
         with:
@@ -56,8 +59,7 @@ jobs:
         run: npm publish --access public --provenance
 
       - name: Update staging branch
-        if: |
-          contains('refs/heads/main', github.ref)
+        if: github.ref == 'refs/heads/main'
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"

@@ -244,7 +244,7 @@ export default class VideoBGAddon {
             if(!imageAsDataURL){
                 imageAsDataURL = await this.imageURLToDataUrl(imageURL);
             }
-        }catch(ex){
+        }catch{
             return {
                 isSuccessful: false,
                 code: 'FAILED_TO_LOAD_IMAGE',
