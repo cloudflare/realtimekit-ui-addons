@@ -12,9 +12,21 @@ const OVERLAY_STYLES = `
 
     .reaction-animation {
         position: absolute;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
         font-size: 32px;
         animation: float-up 3s ease-out forwards;
         pointer-events: none;
+    }
+
+    .reaction-participant-name {
+        margin-top: 4px;
+        color: rgb(var(--rtk-colors-text-1000, 255 255 255));
+        font-size: 12px;
+        font-weight: 500;
+        line-height: 1;
+        text-shadow: 0 1px 2px rgba(var(--rtk-colors-background-1000, 0 0 0) / 0.8);
     }
 
     @keyframes float-up {
@@ -63,14 +75,26 @@ export default class ReactionOverlay extends HTMLElement {
     handleReactionUpdate({ type, payload }) {
         if (type !== 'reaction') return;
 
+        const participant = payload.peerId === this.meeting.self.id
+            ? this.meeting.self
+            : this.meeting.participants.joined.get(payload.peerId);
+        const firstName = participant?.name?.trim().split(/\s+/)[0];
+
         // Show a floating reaction for any participant's reaction
-        this.showReaction(payload.emoji);
+        this.showReaction(payload.emoji, firstName);
     }
 
-    showReaction(emoji: string ) {
+    showReaction(emoji: string, firstName?: string) {
         const reactionEl = document.createElement('div');
         reactionEl.className = 'reaction-animation';
         reactionEl.textContent = emoji;
+
+        if (firstName) {
+            const nameEl = document.createElement('span');
+            nameEl.className = 'reaction-participant-name';
+            nameEl.textContent = firstName;
+            reactionEl.appendChild(nameEl);
+        }
         
         // Start near the bottom-left of the overall meeting area with slight
         // horizontal variation so multiple reactions can be seen together.

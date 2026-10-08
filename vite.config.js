@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import p from './package.json'
+import p from './package.json' with { type: 'json' }
 
 const deps = [...Object.keys(p.peerDependencies) ];
 

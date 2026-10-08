@@ -114,7 +114,7 @@ export default class VideoBGAddon {
         }
 
         /**
-         * NOTE(ravindra-dyte):
+         * NOTE(ravindra-cloudflare):
          *  To speed up the initialisation and meeting load,
          *  below part is commented out and optionally initialized using `initializeCoreVideoBackgroundTransformerIfNeeded`.
          *  `initializeCoreVideoBackgroundTransformerIfNeeded` method is called when first middleware is applied.
@@ -152,7 +152,7 @@ export default class VideoBGAddon {
                 await videoBGAddon.applyBlurBackground();
             } else if (mode === "virtual" && imageURL && imageElement && imageElement.complete && imageElement.naturalHeight) {
                 /**
-                 * NOTE(ravindra-dyte): above check of faulty imageElement ensures that no action is taken if image is not fully loaded
+                 * NOTE(ravindra-cloudflare): above check of faulty imageElement ensures that no action is taken if image is not fully loaded
                  * It could fail to load if the devs missed adding CORS headers on their images,
                  * on a website where CORS is needed for the image URI.
                  * 
@@ -330,7 +330,7 @@ export default class VideoBGAddon {
 
     private async removeCurrentMiddleware() {
         /**
-         * NOTE(ravindra-dyte):
+         * NOTE(ravindra-cloudflare):
          * 
          * Even though we should only be removing the current middleware,
          * for a breakout room, if meeting has changed and for the middleware was carry forwarded,
