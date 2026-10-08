@@ -2,6 +2,8 @@ name: Automated tests
 
 on:
   pull_request:
+    # Tests intentionally run only for PRs targeting release branches to limit CI compute.
+    # Feature work targets staging, so its PR tests still run before merge.
     branches:
       - staging
       - main

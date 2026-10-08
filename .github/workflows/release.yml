@@ -30,7 +30,7 @@ jobs:
           package-manager-cache: false
 
       - name: Install dependencies
-        run: npm install --no-fund --no-audit
+        run: npm ci --no-fund --no-audit
 
       - name: Build package
         run: npm run build

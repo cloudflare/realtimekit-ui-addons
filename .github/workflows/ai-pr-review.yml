@@ -30,6 +30,8 @@ jobs:
         uses: actions/checkout@v6
 
       - name: Run Bonk
+        # Intentional exception: track Bonk's main branch to stay synchronized with
+        # cloudflare/realtimekit-ui instead of pinning this workflow independently.
         uses: Cloudflare-Studio/ask-bonk/github@main
         env:
           CLOUDFLARE_ACCOUNT_ID: ${{ secrets.CF_AI_GATEWAY_ACCOUNT_ID }}
