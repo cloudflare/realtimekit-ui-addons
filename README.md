@@ -1,21 +1,21 @@
 <!-- PROJECT LOGO -->
 <p align="center">
-  <a href="https://realtime.cloudflare.com">
-    <img src="https://docs.realtime.cloudflare.com/logo/cf.svg" alt="Logo" width="120">
+  <a href="https://cloudflare.com">
+    <img src="https://cf-assets.www.cloudflare.com/slt3lc6tev37/6EYsdkdfBcHtgPmgp3YtkD/0b203affd2053988264b9253b13de6b3/logo-thumbnail.png" alt="Logo" width="180">
   </a>
   <h3 align="center">RealtimeKit Ui Addons</h3>
 
   <p align="center">
     A collection of ui-kit addons that extends the RealtimeKit's prebuilt ui-kit capability.
     <br />
-    <a href="https://docs.realtime.cloudflare.com"><strong>Explore the docs »</strong></a>
+    <a href="https://developers.cloudflare.com/realtime/realtimekit/"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://demo.realtime.cloudflare.com">View Demo</a>
+    <a href="https://examples.realtime.cloudflare.com/">View Demo</a>
     ·
-    <a href="https://github.com/dyte-io/ui-kit-addons/issues">Report Bug</a>
+    <a href="https://github.com/cloudflare/realtimekit-ui-addons/issues">Report Bug</a>
     ·
-    <a href="https://github.com/dyte-io/ui-kit-addons/issues">Request Feature</a>
+    <a href="https://github.com/cloudflare/realtimekit-ui-addons/issues">Request Feature</a>
   </p>
 </p>
 
@@ -35,9 +35,9 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-This [repository](https://github.com/dyte-io/ui-kit-addons) contains all the ui-kit addons available for the RealtimeKit Web SDK.
+This [repository](https://github.com/cloudflare/realtimekit-ui-addons) contains all the ui-kit addons available for the RealtimeKit Web SDK.
 
-A comprehensive guide detailing the usage of these ui-kit addons is available [here](https://dyte.io/blog/ui-kit-add-ons/).
+A comprehensive guide to using RealtimeKit UI addons is available in the [Cloudflare documentation](https://developers.cloudflare.com/realtime/realtimekit/ui-kit/addons/).
 
 ## Examples
 

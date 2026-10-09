@@ -1,5 +1,5 @@
 import { defineConfig } from 'vite'
-import p from './package.json'
+import p from './package.json' with { type: 'json' }
 
 const deps = [...Object.keys(p.peerDependencies) ];
 
@@ -8,6 +8,7 @@ export default defineConfig({
     emptyOutDir: true,
     outDir: "dist",
     sourcemap: false,
+    target: ["es2020", "edge88", "firefox78", "chrome87", "safari14"],
     lib: {
       formats: ["cjs", "es"],
       entry: {
