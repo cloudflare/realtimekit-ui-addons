@@ -16,7 +16,7 @@
       "default": "./dist/hand-raise.cjs",
       "types": "./dist/esm/hand-raise/index.d.ts"
     },
-     "./reactions-manager": {
+    "./reactions-manager": {
       "import": "./dist/reactions-manager.js",
       "require": "./dist/reactions-manager.cjs",
       "default": "./dist/reactions-manager.cjs",
@@ -115,28 +115,47 @@
   "scripts": {
     "compile": "tsc -b ./tsconfig.cjs.json ./tsconfig.esm.json",
     "build": "vite build && npm run compile",
-    "dev": "npm run build && vite"
+    "dev": "npm run build && vite",
+    "lint": "eslint \"src/**/*.ts\" \"tests/**/*.ts\"",
+    "lint:fix": "npm run lint -- --fix",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "check": "npm run lint && npm test && npm run build",
+    "prepublishOnly": "cp package.json package.json.bak && node prepublish.cjs",
+    "postpublish": "mv package.json.bak package.json"
   },
   "author": "Cloudflare Inc.",
-  "license": "UNLICENSED",
+  "license": "Apache-2.0",
   "dependencies": {
     "@cloudflare/realtimekit-virtual-background": "0.0.2"
   },
   "main": "index.js",
   "peerDependencies": {
-    "@cloudflare/realtimekit-ui": ">=1.0.1",
-    "@cloudflare/realtimekit": ">=1.0.1"
+    "@cloudflare/realtimekit": ">=1.0.1",
+    "@cloudflare/realtimekit-ui": ">=1.0.1"
   },
   "devDependencies": {
+    "@semantic-release/changelog": "^6.0.3",
+    "@semantic-release/commit-analyzer": "^13.0.1",
+    "@semantic-release/git": "^10.0.1",
+    "@semantic-release/github": "^12.0.10",
+    "@semantic-release/npm": "^13.2.0",
+    "@semantic-release/release-notes-generator": "^14.1.1",
+    "@typescript-eslint/eslint-plugin": "^8.71.1",
+    "@typescript-eslint/parser": "^8.71.1",
+    "eslint": "^10.12.0",
+    "jsdom": "^26.1.0",
+    "semantic-release": "^25.0.9",
     "typescript": "^5.2.2",
-    "vite": "^4.4.8"
+    "vite": "^8.3.4",
+    "vitest": "^5.0.3"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dyte-io/ui-kit-addons.git"
+    "url": "git+https://github.com/cloudflare/realtimekit-ui-addons.git"
   },
   "bugs": {
-    "url": "https://github.com/dyte-io/ui-kit-addons/issues"
+    "url": "https://github.com/cloudflare/realtimekit-ui-addons/issues"
   },
-  "homepage": "https://github.com/dyte-io/ui-kit-addons#readme"
+  "homepage": "https://github.com/cloudflare/realtimekit-ui-addons#readme"
 }
