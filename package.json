@@ -1,6 +1,6 @@
 {
   "name": "@cloudflare/realtimekit-ui-addons",
-  "version": "0.1.0",
+  "version": "0.2.0-staging.1",
   "description": "A collection of Cloudflare RealtimeKit UI addons",
   "type": "module",
   "exports": {
