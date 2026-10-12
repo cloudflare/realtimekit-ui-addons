@@ -1,0 +1,70 @@
+name: Release to NPM Registry
+on:
+  push:
+    branches:
+      - main
+      - staging
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: false
+
+jobs:
+  release:
+    name: Release
+    runs-on: ubuntu-latest
+    permissions:
+      id-token: write
+      contents: write
+      pull-requests: write
+      issues: write
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v6
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v6
+        with:
+          node-version: "24"
+          registry-url: https://registry.npmjs.org/
+          package-manager-cache: false
+
+      - name: Install dependencies
+        run: npm ci --no-fund --no-audit
+
+      - name: Build package
+        run: npm run build
+
+      - name: Release
+        id: release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          ENVIRONMENT: ${{ github.ref }}
+        run: |
+          BEFORE=$(node -p "require('./package.json').version")
+          npx semantic-release
+          AFTER=$(node -p "require('./package.json').version")
+          if [ "${BEFORE}" = "${AFTER}" ]; then
+            echo "published=false" >> "$GITHUB_OUTPUT"
+          else
+            echo "published=true" >> "$GITHUB_OUTPUT"
+          fi
+
+      # Authentication uses npm trusted publishing through GitHub OIDC.
+      - name: Publish
+        if: steps.release.outputs.published == 'true'
+        env:
+          ENVIRONMENT: ${{ github.ref }}
+          NPM_CONFIG_PROVENANCE: true
+        run: npm publish --access public --provenance
+
+      - name: Update staging branch
+        if: github.ref == 'refs/heads/main'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git pull
+          git stash
+          git checkout staging
+          git merge main
+          git push --set-upstream origin staging

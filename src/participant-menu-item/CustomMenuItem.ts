@@ -100,7 +100,7 @@ export default class CustomMenuItem extends HTMLElement {
             }
         };
         this.updateLabel(container);
-        this.onStateChange && this.onStateChange(this.participant.id, (state) => {
+        this.onStateChange?.(this.participant.id, (state) => {
             this.state = state;
             this.updateLabel(container);
         });

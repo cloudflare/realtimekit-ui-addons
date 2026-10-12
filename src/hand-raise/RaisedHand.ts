@@ -56,16 +56,16 @@ export default class RaisedHand extends HTMLElement {
         const participant = this.participant.id === this.meeting.self.id ? this.meeting.self : this.meeting.participants.joined.get(this.participant.id);
         
         /**
-         * NOTE(ravindra-dyte): this is needed since PIP of web-core relies on this
+         * NOTE(ravindra-cloudflare): this is needed since PIP of web-core relies on this
          * In future, Web Core should also start using RTKStore
         */
         participant.raised = this.raised;
 
         /**
-         * NOTE(ravindra-dyte): These PIP related lines are needed to show hand raise in PIP
+         * NOTE(ravindra-cloudflare): These PIP related lines are needed to show hand raise in PIP
          * */
         const pip = this.meeting.participants.pip;
-        pip.updateSource && pip.updateSource(participant.id, {
+        pip.updateSource?.(participant.id, {
             handRaised: this.raised
         });
 
